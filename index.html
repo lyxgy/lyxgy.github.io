@@ -1,92 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人介绍</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>桂涛的个人网站</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background: #f8f9fa;
+            --text-color: #333;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        /* 博客列表 */
+        .blog-section {
+            margin: 3rem 0;
+        }
+
+        .blog-list {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .blog-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* GitHub Pages说明 */
+        .github-pages-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .blog-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">我的介绍</a></li>
+                <li><a href="#blog" class="nav-link">博客</a></li>
+                <li><a href="#dev" class="nav-link">生活记录</a></li>
+                <li><a href="#research" class="nav-link">杂七杂八的研究</a></li>
+                <li><a href="#anime" class="nav-link">二次元</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="blog-section">
+            <h2>最新博客</h2>
+            <div class="blog-list">
+                <article class="blog-card">
+                    <h3> OBS 直播</h3>
+                    <p>OBS Studio的完整配置指南</p>
+                </article>
+                <article class="blog-card">
+                    <h3>Markdown 语法学习 精简版</h3>
+                    <p>10分钟掌握Markdown核心语法</p>
+                </article>
+                <!-- 更多博客条目... -->
+            </div>
+        </section>
+
+        <section class="github-pages-section">
+			<div class="container">
+				<div class="info-box">
+					<a href="https://pages.github.com" target="_blank" class="guide-title-link">
+						<h2>GitHub Pages 指南</h2>
+					</a>
+					<p>免费、稳定、支持全球CDN加速的静态网站托管方案</p>
+					<ul class="guide-features">
+						<li><i class="fas fa-check"></i> 用户网站：username.github.io</li>
+						<li><i class="fas fa-check"></i> 项目网站：username.github.io/repository</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+    </main>
+
+    <footer style="background: var(--primary-color); color: white; padding: 2rem; margin-top: 3rem;">
+        <div class="container">
+            <p>© 2025 桂涛的个人网站 · 由 GitHub Pages 驱动</p>
+            <p>联系方式：3341328441@qq.com</p>
+        </div>
+    </footer>
+</body>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div id="bigbox">
-        <div id="banner">
-            <img src="picture/banner.png" alt="">
-        </div>
-        <nav>
-            <a class="dangqian" href="">首页</a>
-            <a href="duanwen.html">短文</a>
-            <a href="rizhi.html">日志</a>
-            <a href="liuyan.html">留言板</a>
-        </nav>
-        <div id="main">
-            <div id="main_left">
-                <h2>关于我</h2>
-                <img src="picture/me.png" alt="">
-                <p>
-                    <span>姓名</span>:*****<br>
-                    <span>性别</span>:男<br>
-                    <span>爱好</span>:听歌 踢足球 打游戏<br>
-                    <span>性格</span> :开朗<br>
-                    <span>家乡</span>:新疆乌恰县<br>
-                    <span>专业</span>:计算机网络技术
-                </p>
-            </div>
-            <div id="main_right">
-                <h2>热爱生活</h2>
-                <p>
-                    一、岁月从来不曾静好，只是有人在替你背负枷锁，含泪前行。也许是父母，也许是朋友，也许是陌生人……无论是谁，请记得常怀感恩之心。
-                </p>
-                <p>
-                    二、这个世界并不完美，甚至有点残酷。你无法决定下一段旅途遇见的是好事还是坏事，可你能决定面对它们的态度。你看这个世界的角度，决定了这个世界给你的温度。
-                </p>
-                <p>
-                    三、总会有一件事让你瞬间长大，也总会有一个人让你泪如雨下。愿你早日领教这个世界的深深恶意，让自己活得开心得意。
-                </p>
-                <p>
-                    四、想要与众不同，却总随遇而安，想要做很多未做的事，却在现实棘手的吃喝拉撒前低下了头，我们间歇性热血满腔，长时间迷茫犯懒，别等了，再努力试试看！
-                </p>
-                <img src="picture/life.png" alt="">
-            </div>
-        </div>
-        <div id="luxing">
-            <h2>旅行生活</h2>
-            <div>
-                <div id="picture">
-                    <img src="picture/11.png" alt="">
-                    <p>在日月潭</p>
-                </div>
-                <div id="picture">
-                    <img src="picture/22.png" alt="">
-                    <p>
-                        在毛里求斯
-                    </p>
-                </div>
-                <div id="picture">
-                    <img src="picture/33.png" alt="">
-                    <p>
-                        在马尔代夫
-                    </p>
-                </div>
-                <div id="picture">
-                    <img src="picture/44.png" alt="">
-                    <p>
-                        在玉龙雪山
-                    </p>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <p>
-                版权所有©*****
-            </p>
-        </footer>
-    </div>
+    <!-- 内容 -->
+    <script src="script.js"></script>
 </body>
-
 </html>
-
-
-
