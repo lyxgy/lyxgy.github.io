@@ -61,4 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-});
+    // 自动设置当前页面激活状态
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentPage = location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const linkPage = link.getAttribute('href');
+            link.classList.toggle('active', linkPage === currentPage);
+        });
+    });
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.content-block').forEach(block => {
+            const speed = block.dataset.speed || 0.3;
+            const yPos = -(window.pageYOffset * speed);
+            block.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+})

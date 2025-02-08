@@ -3,172 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>桂涛的个人网站</title>
+    <title>桂涛的个人空间</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
+            --primary: #7c3aed;
+            --secondary: #10b981;
+            --surface: rgba(255, 255, 255, 0.9);
             --background: #f8f9fa;
-            --text-color: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --text: #2c3e50;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
             background: var(--background);
-            color: var(--text-color);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .grid-system {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            padding: 2rem 0;
         }
 
-        /* 导航栏 */
-        .navbar {
+        .content-block {
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .content-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-block {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
             background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 1rem 0;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* 新增的导航栏样式 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 10px 20px;
             position: sticky;
             top: 0;
+            z-index: 1000;
         }
 
-        .nav-links {
+        .navbar .logo {
+            margin-right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links {
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            gap: 20px;
+            flex-grow: 1;
         }
 
-        .nav-link {
-            color: var(--primary-color);
+        .navbar .nav-links a {
+            color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            font-size: 16px;
         }
 
-        .nav-link:hover {
-            background: var(--secondary-color);
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .new-badge {
+            background-color: #007bff;
             color: white;
-        }
-
-        /* 博客列表 */
-        .blog-section {
-            margin: 3rem 0;
-        }
-
-        .blog-list {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-
-        .blog-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* GitHub Pages说明 */
-        .github-pages-section {
-            background: var(--primary-color);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 3rem;
-        }
-
-        .info-box {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .blog-list {
-                grid-template-columns: 1fr;
-            }
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">我的介绍</a></li>
-                <li><a href="#blog" class="nav-link">博客</a></li>
-                <li><a href="#dev" class="nav-link">生活记录</a></li>
-                <li><a href="#research" class="nav-link">杂七杂八的研究</a></li>
-                <li><a href="#anime" class="nav-link">二次元</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        });
+    </script>
 
-    <main class="container">
-        <section class="blog-section">
-            <h2>最新博客</h2>
-            <div class="blog-list">
-                <article class="blog-card">
-                    <h3> OBS 直播</h3>
-                    <p>OBS Studio的完整配置指南</p>
-                </article>
-                <article class="blog-card">
-                    <h3>Markdown 语法学习 精简版</h3>
-                    <p>10分钟掌握Markdown核心语法</p>
-                </article>
-                <!-- 更多博客条目... -->
+    <main class="grid-system" style="padding: 0 2rem;">
+        <section class="feature-block">
+            <h1>代码即艺术</h1>
+            <p>用技术创造优雅解决方案</p>
+            <div class="gallery-grid" style="margin-top: 2rem;">
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
             </div>
         </section>
 
-        <section class="github-pages-section">
-			<div class="container">
-				<div class="info-box">
-					<a href="https://pages.github.com" target="_blank" class="guide-title-link">
-						<h2>GitHub Pages 指南</h2>
-					</a>
-					<p>免费、稳定、支持全球CDN加速的静态网站托管方案</p>
-					<ul class="guide-features">
-						<li><i class="fas fa-check"></i> 用户网站：username.github.io</li>
-						<li><i class="fas fa-check"></i> 项目网站：username.github.io/repository</li>
-					</ul>
-				</div>
-			</div>
-		</section>
+        <div class="grid-system">
+            <div class="content-block">
+                <h2>技术栈</h2>
+                <div class="grid-system">
+                    <div class="info-card">
+                        <i class="fab fa-react fa-2x"></i>
+                        <h3>前端架构</h3>
+                        <p>React/Next.js 生态体系</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-server fa-2x"></i>
+                        <h3>后端技术</h3>
+                        <p>Node.js + Golang 解决方案</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>最近动态</h2>
+                <div class="info-card">
+                    <time>2024.03.15</time>
+                    <p>发布新的开源项目：AI 工作流引擎</p>
+                    <a href="#" class="content-block">查看详情 →</a>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer style="background: var(--primary-color); color: white; padding: 2rem; margin-top: 3rem;">
-        <div class="container">
-            <p>© 2025 桂涛的个人网站 · 由 GitHub Pages 驱动</p>
-            <p>联系方式：3341328441@qq.com</p>
+    <section class="feature-block" style="margin-top: 4rem;">
+        <div class="grid-system">
+            <div class="info-card" style="background: rgba(255,255,255,0.9);">
+                <h2>三维作品集</h2>
+                <p>使用Three.js创建的交互式展示</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                </div>
+            </div>
         </div>
-    </footer>
-</body>
-
-<head>
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <!-- 内容 -->
-    <script src="script.js"></script>
+    </section>
 </body>
 </html>
