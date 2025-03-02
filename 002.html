@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="个人尝试的第一个网页">
+    <link rel="icon" type="image/x-icon" href="https://img0.baidu.com/it/u=1146355616,1502141039&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=1174">
+    <title>个人独立搭建</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* 确保页面最小高度为屏幕高度 */
+        }
+        header {
+            background-color: #3249be;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+        }
+        .navbar {
+            background-color: #333;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: auto;
+            padding-top: 20px;
+        }
+
+        .navbar a {
+            display: block;
+            color: white;
+            text-align: left;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .submenu {
+            display: none;
+            background-color: #444;
+            padding-left: 20px;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            display: none;
+        }
+
+        footer {
+            background-color: #3249be;
+            color: #fff;
+            text-align: center;
+            padding-left: 15px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="#" onclick="showPage('home')">主页</a>
+        <a href="#" onclick="showPage('life')">生活</a>
+        <a href="javascript:void(0);" onclick="toggleSubmenu()">杂七杂八的研究</a>
+        <div id="submenu" class="submenu">
+            <a href="#" onclick="showPage('research1')">研究一 - 计算机科学</a>
+            <a href="#" onclick="showPage('research2')">研究二 - 数学</a>
+            <a href="#" onclick="showPage('research3')">研究三 - 英语</a>
+            <a href="#" onclick="showPage('research4')">研究四 - 语文</a>
+        </div>
+        <a href="#" onclick="showPage('contact')">联系信息</a>
+        <a href="#" onclick="showPage('about')">关于我们</a>
+    </div>
+
+    <div id="home" class="content" style="display: block;">
+        <h2>主页</h2>
+        <p>欢迎来到主页！</p>
+        <h2>博客文章标题</h2>
+        <p><strong>发布时间：</strong>2025年2月17日</p>
+        <p>欢迎来到我的博客！这篇文章是关于我在编程中的一些经验和心得。在这篇文章中，我将分享如何使用HTML、CSS以及一些简单的JavaScript来创建一个基本的网页。无论你是刚刚接触编程的新手，还是想要提升技能的开发者，这篇文章都能为你提供一些有用的指导。</p>
+        
+        <p>首先，你需要了解HTML（超文本标记语言）是构建网页的基本语言。它可以定义网页的结构，例如标题、段落、图片等内容。CSS（层叠样式表）则用来控制网页的外观，包括布局、字体样式和颜色等。</p>
+        
+        <p>接下来，我们来学习如何在页面中嵌入一些图片...</p>
+        <audio controls>
+            <source src="sources/从前从前.mp3" type="audio/mp3">
+        </audio>
+        
+        <video controls>
+            <source src="sources/老师说我跳舞的时候眼睛会发光！.mp4" type="video/mp4">
+        </video>
+
+        <p style="text-align: center;">友情链接:</p>
+        <a href="https://developer.mozilla.org/zh-CN/">MDN</a>
+        <a href="https://www.runoob.com/">菜鸟教程</a>
+
+        <footer>
+            <p>© 2025 我的博客</p>
+        </footer>
+
+    </div>
+
+    <div id="life" class="content">
+        <h2>生活</h2>
+        <p>这是生活页面。</p>
+
+        <a href="javascript:void(0)" onclick="document.getElementById('pdfContainer').style.display='block'">随笔2024.4.15</a>
+
+        <div id="pdfContainer" style="display:none;">
+            <iframe src="sources/随笔2024.4.15.md" width="100%" height="600px"></iframe>
+        </div>
+        
+        
+    </div>
+
+    <div id="research1" class="content">
+        <h2>研究一 - 计算机科学</h2>
+        <p>这是关于计算机科学的研究内容。</p>
+    </div>
+
+    <div id="research2" class="content">
+        <h2>研究二 - 数学</h2>
+        <p>这是关于数据科学的研究内容。</p>
+    </div>
+
+    <div id="research3" class="content">
+        <h2>研究三 - 英语</h2>
+        <p>这是关于人工智能的研究内容。</p>
+    </div>
+
+    <div id="research4" class="content">
+        <h2>研究四 - 语文</h2>
+        <p>这是关于物理学的研究内容。</p>
+    </div>
+
+    <div id="about" class="content">
+        <h2>关于我们</h2>
+        <p>这是关于我们的页面。</p>
+    </div>
+
+    <div id="contact" class="content">
+        <h2>联系信息</h2>
+        <p>请通过邮件与我们联系。</p>
+    </div>
+
+    <script>
+        function showPage(page) {
+            var contents = document.getElementsByClassName('content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].style.display = 'none';
+            }
+            document.getElementById(page).style.display = 'block';
+        }
+
+        function toggleSubmenu() {
+            var submenu = document.getElementById('submenu');
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
